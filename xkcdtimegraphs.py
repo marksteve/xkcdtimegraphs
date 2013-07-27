@@ -45,8 +45,8 @@ def gh_repo_events():
         data = []
         for k, v in series.iteritems():
             data.append((
-                name,
-                data,
+                k,
+                v,
             ))
         return url_for(
             'render',
@@ -69,6 +69,8 @@ def render(data):
     # ]
     data = json.loads(base64.urlsafe_b64decode(data.encode('utf8')))
     # PROCESS
+    import plotter
+    return plotter.plot_time_series(data)
     return '[IMAGE HERE]'
 
 
