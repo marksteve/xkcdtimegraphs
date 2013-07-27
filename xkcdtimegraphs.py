@@ -38,15 +38,15 @@ def gh_repo_events():
             event_type = event['type'].lower()[:-5]
             if event_type == 'create':
                 event_type += '-' + event['payload']['ref_type']
-            series.setdefault(event_type, []).append(dict(
-                timestamp=to_timestamp(event['created_at']),
-                value=1,
+            series.setdefault(event_type, []).append((
+                to_timestamp(event['created_at']),
+                1,
             ))
         data = []
         for k, v in series.iteritems():
-            data.append(dict(
-                name=k,
-                data=v,
+            data.append((
+                name,
+                data,
             ))
         return url_for(
             'render',
@@ -59,15 +59,11 @@ def gh_repo_events():
 @app.route('/render/<data>')
 def render(data):
     # data = [
-    #   dict(
-    #       name='series name',
-    #       data=[
-    #           12345678: 1.0, (timestamp, value)
-    #           12345678: 2.0,
-    #           12345678: 3.0,
-    #           12345678: 2.0,
-    #           12345678: 1.0,
-    #       ]
+    #   ('series name', [
+    #       (12345678, 1.0), (timestamp, value),
+    #       (12345678, 2.0),
+    #       (12345678, 3.0),
+    #    ],
     #   ),
     #   ...
     # ]
