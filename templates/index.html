@@ -5,6 +5,9 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/foundation.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Gloria+Hallelujah">
+<script src="{{ url_for('static', filename='js/vendor/custom.modernizr.js') }}"></script>
+<script src="{{ url_for('static', filename='js/vendor/jquery.js') }}"></script>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
 <title>XKCD Time Grpahs</title>
 </head>
 <body>
@@ -12,10 +15,12 @@
     <header class="row">
         <h1>XKCD Time Graphs</h1>
     </header>
-    <section class="google-trends row">
+    <section class="row">
         <div class="large-centered large-8 columns">
-            <h2>Google Trends</h2>
-            <p><input type="text" placeholder="Enter a keyword or keywords separated by commas"></p>
+            <h2>Github Repo Events</h2>
+            <form id="gh-repo-events" action="{{ url_for('gh_repo_events') }}" method="post">
+                <p><input name="repo" type="text" placeholder="Enter a repo name: owner/repo"></p>
+            </form>
             <div class="graph"></div>
         </div>
     </section>
