@@ -75,8 +75,9 @@ def gh_repo_events():
 @app.route('/twitter-timeline', methods=['POST'])
 def twitter_timeline():
     url = TWITTER_API_URL.format('statuses/user_timeline.json')
+    screen_name = request.form['screen_name']
     r = twitter.get(url, params=dict(
-        screen_name=request.form['screen_name'],
+        screen_name=screen_name,
     ))
     if r.ok:
         tweets = []
@@ -85,7 +86,7 @@ def twitter_timeline():
                 twitter_to_timestamp(tweet['created_at']),
                 1,
             ))
-        data = [('tweets', tweets)]
+        data = [(screen_name, tweets)]
         return url_for(
             'render',
             data=base64.urlsafe_b64encode(json.dumps(data)),
