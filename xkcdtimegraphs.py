@@ -110,7 +110,6 @@ def render(data):
     # PROCESS
     import plotter
     return plotter.plot_time_series(data)
-    return '[IMAGE HERE]'
 
 
 if __name__ == '__main__':

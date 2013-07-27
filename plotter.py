@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 import matplotlib.dates as mdates
 
+colors = 'bgrcmyk'
+markers = 'o^Ds_'
 
 def plot_time_series(data):
   buf = StringIO()
@@ -13,15 +15,23 @@ def plot_time_series(data):
   # loc = mdates.AutoDateLocator()
   # axes.xaxis.set_major_locator(loc)
   # axes.xaxis.set_major_formatter(mdates.AutoDateFormatter(loc))
-  for name, series in data:
+  max_y = 0
+  for i, (name, series) in enumerate(data):
     series.sort()
     series = _group_by_date(series)
+    # print name, series
     times, values = zip(*series)
-    # print times, values
+    max_y = max(max_y, max(values))
     # times = map(datetime.fromtimestamp, times)
-    # plt.plot_date(x=times, y=values, label=name)
-    plt.plot(times, values, label=name)
-  plt.ylim(ymin=0)
+    plt.plot(times, values, color=colors[i%len(colors)])
+    plt.plot_date(x=times, y=values, label=name,
+                  color=colors[i%len(colors)],
+                  markersize=10.0,
+                  marker=markers[i%len(markers)],
+                  )
+  plt.ylim(ymin=0, ymax=max_y+10)
+  xlim = plt.xlim()
+  plt.xlim(xlim[0]-3, xlim[1]+3)
   plt.legend()
   plt.savefig(buf, format='png')
   plt.close()
