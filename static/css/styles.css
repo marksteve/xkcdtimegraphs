@@ -1,6 +1,6 @@
 .page {
   margin: 3.125em 0; }
-  .page h1, .page h2, .page h3, .page h4, .page h5, .page h6, .page input {
+  .page, .page h1, .page h2, .page h3, .page h4, .page h5, .page h6, .page input {
     font-family: 'Gloria Hallelujah';
     text-transform: uppercase; }
   .page header {
