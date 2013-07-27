@@ -1,10 +1,13 @@
 .page {
-  margin: 3.125em 0; }
+  margin: 3.125em auto; }
   .page, .page h1, .page h2, .page h3, .page h4, .page h5, .page h6, .page input {
     font-family: 'Gloria Hallelujah';
     text-transform: uppercase; }
   .page header {
-    border-bottom: 0.1875em #222222 solid;
-    margin-bottom: 3.125em; }
-  .page h1 {
-    text-align: center; }
+    background: url(../images/header.png) center center no-repeat;
+    padding: 1.5625em 0; }
+    .page header h1 {
+      text-align: center; }
+  .page section {
+    border: 0.1875em #222222 solid;
+    padding: 3.125em 0; }
