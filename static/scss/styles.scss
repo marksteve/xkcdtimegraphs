@@ -1,12 +1,15 @@
 @import "foundation/variables";
 
-body, h1, h2, h3, h4, h5, h6 {
-    font-family: 'Gloria Hallelujah';
-    text-transform: uppercase;
-}
-
 .page {
     margin: emCalc(50px) 0;
+    h1, h2, h3, h4, h5, h6, input {
+        font-family: 'Gloria Hallelujah';
+        text-transform: uppercase;
+    }
+    header {
+        border-bottom: emCalc(3px) #222 solid;
+        margin-bottom: emCalc(50px)
+    }
     h1 {
         text-align: center;
     }

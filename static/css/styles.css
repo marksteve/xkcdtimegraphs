@@ -1,8 +1,10 @@
-body, h1, h2, h3, h4, h5, h6 {
-  font-family: 'Gloria Hallelujah';
-  text-transform: uppercase; }
-
 .page {
   margin: 3.125em 0; }
+  .page h1, .page h2, .page h3, .page h4, .page h5, .page h6, .page input {
+    font-family: 'Gloria Hallelujah';
+    text-transform: uppercase; }
+  .page header {
+    border-bottom: 0.1875em #222222 solid;
+    margin-bottom: 3.125em; }
   .page h1 {
     text-align: center; }
