@@ -4,7 +4,7 @@ from datetime import datetime
 import matplotlib.dates as mdates
 
 colors = 'bgrcmyk'
-markers = 'o^Ds_'
+markers = 'o^Ds*'
 
 def plot_time_series(data):
   buf = StringIO()
@@ -14,7 +14,7 @@ def plot_time_series(data):
   axes = plt.axes()
   # loc = mdates.AutoDateLocator()
   # axes.xaxis.set_major_locator(loc)
-  # axes.xaxis.set_major_formatter(mdates.AutoDateFormatter(loc))
+  # axes.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
   max_y = 0
   for i, (name, series) in enumerate(data):
     series.sort()
@@ -23,12 +23,17 @@ def plot_time_series(data):
     times, values = zip(*series)
     max_y = max(max_y, max(values))
     # times = map(datetime.fromtimestamp, times)
-    plt.plot(times, values, color=colors[i%len(colors)])
-    plt.plot_date(x=times, y=values, label=name,
-                  color=colors[i%len(colors)],
-                  markersize=10.0,
-                  marker=markers[i%len(markers)],
-                  )
+    plt.plot(times, values,
+             label=name,
+             color=colors[i%len(colors)],
+             markersize=10.0,
+             marker=markers[i%len(markers)],
+             )
+    # plt.plot_date(x=times, y=values, label=name,
+    #               color=colors[i%len(colors)],
+    #               markersize=10.0,
+    #               marker=markers[i%len(markers)],
+    #               )
   plt.ylim(ymin=0, ymax=max_y+10)
   xlim = plt.xlim()
   plt.xlim(xlim[0]-3, xlim[1]+3)

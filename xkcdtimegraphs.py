@@ -58,7 +58,7 @@ def gh_repo_events():
             if event_type == 'create':
                 event_type += '-' + event['payload']['ref_type']
             series.setdefault(event_type, []).append((
-                twitter_to_timestamp(event['created_at']),
+                iso8601_to_timestamp(event['created_at']),
                 1,
             ))
         data = []
