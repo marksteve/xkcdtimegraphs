@@ -10,4 +10,5 @@
       text-align: center; }
   .page section {
     border: 0.1875em #222222 solid;
-    padding: 3.125em 0; }
+    padding: 3.125em 0;
+    margin-bottom: 1.5625em; }

@@ -3,7 +3,7 @@
 <head>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/foundation.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Gloria+Hallelujah">
 <script src="{{ url_for('static', filename='js/vendor/custom.modernizr.js') }}"></script>
 <script src="{{ url_for('static', filename='js/vendor/jquery.js') }}"></script>
@@ -18,8 +18,17 @@
     <section class="row">
         <div class="large-centered large-8 columns">
             <h2>Github Repo Events</h2>
-            <form id="gh-repo-events" action="{{ url_for('gh_repo_events') }}" method="post">
+            <form action="{{ url_for('gh_repo_events') }}" method="post">
                 <p><input name="repo" type="text" placeholder="Enter a repo name: owner/repo"></p>
+            </form>
+            <div class="graph"></div>
+        </div>
+    </section>
+    <section class="row">
+        <div class="large-centered large-8 columns">
+            <h2>Twitter Timeline</h2>
+            <form action="{{ url_for('twitter_timeline') }}" method="post">
+                <p><input name="screen_name" type="text" placeholder="Enter screen name"></p>
             </form>
             <div class="graph"></div>
         </div>

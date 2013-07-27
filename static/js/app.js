@@ -1,6 +1,6 @@
 $(function() {
 
-$('#gh-repo-events').on('submit', function(e) {
+$('form').on('submit', function(e) {
     e.preventDefault();
     var $form = $(this),
         $graph = $form.next('.graph');

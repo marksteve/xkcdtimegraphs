@@ -1,5 +1,6 @@
 flask
 numpy
 matplotlib
-requests
+requests>=1.0
+requests-oauthlib
 iso8601
